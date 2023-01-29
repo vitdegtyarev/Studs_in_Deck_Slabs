@@ -4,4 +4,3 @@ numpy==1.20.3
 joblib==1.1.0
 scikit-learn==1.0.2
 pillow==9.0.1
-ngboost==0.3.13
