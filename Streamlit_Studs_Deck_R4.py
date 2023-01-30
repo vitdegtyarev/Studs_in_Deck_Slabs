@@ -16,7 +16,7 @@ NGBoost_sc=pickle.load(open(os.path.join(ROOT_DIR,'Studs_Deck_NGBoost.pkl'),'rb'
 k_red_NGBoost_T=0.90
 k_red_NGBoost_R=0.94
 
-st.write('### Probabalistic Predictions of the Shear Resistance of Welded Studs in Deck Slab Ribs Transverse to Beams through Natural Gradient Boosting')
+st.write('### Probabilistic Predictions of the Shear Resistance of Welded Studs in Deck Slab Ribs Transverse to Beams through Natural Gradient Boosting')
 
 st.sidebar.header('User input parameters')
 
