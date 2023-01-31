@@ -222,8 +222,8 @@ if design_practice=='Europe':
     st.write('##### Predicted stud shear resistance')
     
     st.write('Mean nominal stud shear resistance, $P_\mathrm{n,mean}$=', "{:.2f}".format(Pn_NGBoost[0]),' kN')
-    st.write('99.7% lower bound of nominal stud shear resistance, $P_\mathrm{n,mean}-3\sigma$=', "{:.2f}".format(Pn_NGBoost_99p7lower[0]),' kN') 
-    st.write('99.7% upper bound of nominal stud shear resistance, $P_\mathrm{n,mean}+3\sigma$=', "{:.2f}".format(Pn_NGBoost_99p7upper[0]),' kN')     
+    st.write('Lower bound of the 99.7% confidence interval for the nominal stud shear resistance, $P_\mathrm{n,99.7LB}$=', "{:.2f}".format(Pn_NGBoost_99p7lower[0]),' kN') 
+    st.write('Upper bound of the 99.7% confidence interval for the nominal stud shear resistance, $P_\mathrm{n,99.7UB}$=', "{:.2f}".format(Pn_NGBoost_99p7upper[0]),' kN')     
     st.write('Design stud shear resistance, $P_\mathrm{Rd}$=',"{:.2f}".format(Prd_NGBoost[0]),' kN')
     
     
@@ -250,10 +250,10 @@ if design_practice=='Europe':
     ax1=f1.add_subplot(1, 1, 1)
     ax1.plot(xrange,distval,c='#08519c',linewidth=1.5,linestyle='solid',label='$P_\mathrm{n}$ distribution')
     ax1.vlines(Pn_NGBoost,0,np.max(distval),'#e41a1c',linewidth=1.5,linestyle='solid',label='$P_\mathrm{n,mean}$')
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_68p3lower)&(xrange<Pn_NGBoost_68p3upper),color= "#4292c6",alpha= 0.75,label="$P_\mathrm{n,mean}\pm \sigma$ (68.3% bound)", lw=0.25)
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_95p4lower)&(xrange<Pn_NGBoost_68p3lower), color= "#4292c6", alpha= 0.5, label="$P_\mathrm{n,mean}\pm 2\sigma$ (95.4% bound)", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_68p3lower)&(xrange<Pn_NGBoost_68p3upper),color= "#4292c6",alpha= 0.75,label="68.3% confidence interval", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_95p4lower)&(xrange<Pn_NGBoost_68p3lower), color= "#4292c6", alpha= 0.5, label="95.4% confidence interval", lw=0.25)
     ax1.fill_between(xrange, distval, 0, where=(xrange<Pn_NGBoost_95p4upper)&(xrange>Pn_NGBoost_68p3upper), color= "#4292c6", alpha= 0.5, lw=0.25)
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_99p7lower)&(xrange<Pn_NGBoost_95p4lower), color= "#4292c6", alpha= 0.25, label="$P_\mathrm{n,mean}\pm 3\sigma$ (99.7% bound)", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Pn_NGBoost_99p7lower)&(xrange<Pn_NGBoost_95p4lower), color= "#4292c6", alpha= 0.25, label="99.7% confidence interval", lw=0.25)
     ax1.fill_between(xrange, distval, 0, where=(xrange<Pn_NGBoost_99p7upper)&(xrange>Pn_NGBoost_95p4upper), color= "#4292c6", alpha= 0.25, lw=0.25)
     ax1.vlines(Prd_NGBoost,0,np.max(distval),'#4daf4a',linewidth=1.5,linestyle='solid',label='$P_\mathrm{Rd}$')
     ax1.tick_params(axis='both', which='major', labelsize=10, direction='in', width=0.5)
@@ -689,10 +689,10 @@ if design_practice=='Europe':
     ax1.plot(fck1, Prd_NGBoost_1, color='#4daf4a',linewidth=1.5, label='$P_\mathrm{Rd}$',linestyle='solid')
     ax1.plot(fck1, Pn_NGBoost_1, color='#08519c',linewidth=1.5, label='$P_\mathrm{n,mean}$',linestyle='solid')
 
-    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_68p3lower,Pn_NGBoost_1_68p3upper, color= "#4292c6",alpha= 0.75,label="$P_\mathrm{n,mean}\pm \sigma$ (68.3% bound)", lw=0.25)
-    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_68p3lower,Pn_NGBoost_1_95p4lower, color= "#4292c6",alpha= 0.5,label="$P_\mathrm{n,mean}\pm 2\sigma$ (95.4% bound)", lw=0.25)
+    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_68p3lower,Pn_NGBoost_1_68p3upper, color= "#4292c6",alpha= 0.75,label="68.3% confidence interval", lw=0.25)
+    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_68p3lower,Pn_NGBoost_1_95p4lower, color= "#4292c6",alpha= 0.5,label="95.4% confidence interval", lw=0.25)
     ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_68p3upper,Pn_NGBoost_1_95p4upper, color= "#4292c6",alpha= 0.5, lw=0.25)
-    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_95p4lower,Pn_NGBoost_1_99p7lower, color= "#4292c6",alpha= 0.25,label="$P_\mathrm{n,mean}\pm 3\sigma$ (99.7% bound)", lw=0.25)
+    ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_95p4lower,Pn_NGBoost_1_99p7lower, color= "#4292c6",alpha= 0.25,label="99.7% confidence interval", lw=0.25)
     ax1.fill_between(fck1.reshape(len(fck1),),Pn_NGBoost_1_95p4upper,Pn_NGBoost_1_99p7upper, color= "#4292c6",alpha= 0.25, lw=0.25)
 
     fck_loc=np.where(fck1==fck)[0].item()
@@ -976,8 +976,8 @@ else:
     st.write('##### Predicted stud shear strength')
     
     st.write('Mean nominal stud shear strength, $Q_\mathrm{n,mean}$=', "{:.3f}".format(Qn_NGBoost_kips[0]),' kips')
-    st.write('99.7% lower bound of nominal stud shear strength, $Q_\mathrm{n,mean}-3\sigma$=', "{:.3f}".format(Qn_NGBoost_99p7lower[0]),' kips') 
-    st.write('99.7% upper bound of nominal stud shear strength, $Q_\mathrm{n,mean}+3\sigma$=', "{:.3f}".format(Qn_NGBoost_99p7upper[0]),' kips') 
+    st.write('Lower bound of the 99.7% confidence interval for the nominal stud shear strength, $Q_\mathrm{n,99.7LB}$=', "{:.3f}".format(Qn_NGBoost_99p7lower[0]),' kips') 
+    st.write('Upper bound of the 99.7% confidence interval for the nominal stud shear strength, $Q_\mathrm{n,99.7UB}$=', "{:.3f}".format(Qn_NGBoost_99p7upper[0]),' kips') 
 
 
     st.write('##### Stud shear strength distribution plot')
@@ -996,10 +996,10 @@ else:
     ax1=f1.add_subplot(1, 1, 1)
     ax1.plot(xrange,distval,c='#08519c',linewidth=1.5,linestyle='solid',label='$Q_\mathrm{n}$ distribution')
     ax1.vlines(Qn_NGBoost_kips,0,np.max(distval),'#e41a1c',linewidth=1.5,linestyle='solid',label='$Q_\mathrm{n,mean}$')
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_68p3lower)&(xrange<Qn_NGBoost_68p3upper),color= "#4292c6",alpha= 0.75,label="$Q_\mathrm{n,mean}\pm \sigma$ (68.3% bound)", lw=0.25)
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_95p4lower)&(xrange<Qn_NGBoost_68p3lower), color= "#4292c6", alpha= 0.5, label="$Q_\mathrm{n,mean}\pm 2\sigma$ (95.4% bound)", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_68p3lower)&(xrange<Qn_NGBoost_68p3upper),color= "#4292c6",alpha= 0.75,label="68.3% confidence interval", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_95p4lower)&(xrange<Qn_NGBoost_68p3lower), color= "#4292c6", alpha= 0.5, label="95.4% confidence interval", lw=0.25)
     ax1.fill_between(xrange, distval, 0, where=(xrange<Qn_NGBoost_95p4upper)&(xrange>Qn_NGBoost_68p3upper), color= "#4292c6", alpha= 0.5, lw=0.25)
-    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_99p7lower)&(xrange<Qn_NGBoost_95p4lower), color= "#4292c6", alpha= 0.25, label="$Q_\mathrm{n,mean}\pm 3\sigma$ (99.7% bound)", lw=0.25)
+    ax1.fill_between(xrange, distval, 0, where=(xrange>Qn_NGBoost_99p7lower)&(xrange<Qn_NGBoost_95p4lower), color= "#4292c6", alpha= 0.25, label="99.7% confidence interval", lw=0.25)
     ax1.fill_between(xrange, distval, 0, where=(xrange<Qn_NGBoost_99p7upper)&(xrange>Qn_NGBoost_95p4upper), color= "#4292c6", alpha= 0.25, lw=0.25)
     ax1.tick_params(axis='both', which='major', labelsize=10, direction='in', width=0.5)
     ax1.set_ylabel('PDF', fontsize=12)
@@ -1415,10 +1415,10 @@ else:
     ax1 = f1.add_subplot(6,2,1)
     ax1.plot(fprc_psi1, Qn_NGBoost_1_kips, color='#08519c',linewidth=1.5, label='$Q_\mathrm{n,mean}$',linestyle='solid')
 
-    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_68p3lower,Qn_NGBoost_1_68p3upper, color= "#4292c6",alpha= 0.75,label="$Q_\mathrm{n,mean}\pm \sigma$ (68.3% bound)", lw=0.25)
-    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_68p3lower,Qn_NGBoost_1_95p4lower, color= "#4292c6",alpha= 0.5,label="$Q_\mathrm{n,mean}\pm 2\sigma$ (95.4% bound)", lw=0.25)
+    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_68p3lower,Qn_NGBoost_1_68p3upper, color= "#4292c6",alpha= 0.75,label="68.3% confidence interval", lw=0.25)
+    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_68p3lower,Qn_NGBoost_1_95p4lower, color= "#4292c6",alpha= 0.5,label="95.4% confidence interval", lw=0.25)
     ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_68p3upper,Qn_NGBoost_1_95p4upper, color= "#4292c6",alpha= 0.5, lw=0.25)
-    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_95p4lower,Qn_NGBoost_1_99p7lower, color= "#4292c6",alpha= 0.25,label="$Q_\mathrm{n,mean}\pm 3\sigma$ (99.7% bound)", lw=0.25)
+    ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_95p4lower,Qn_NGBoost_1_99p7lower, color= "#4292c6",alpha= 0.25,label="99.7% confidence interval", lw=0.25)
     ax1.fill_between(fprc_psi1.reshape(len(fprc_psi1),),Qn_NGBoost_1_95p4upper,Qn_NGBoost_1_99p7upper, color= "#4292c6",alpha= 0.25, lw=0.25)
 
     fprc_loc=np.where(fprc_psi1==fprc_psi)[0].item()
