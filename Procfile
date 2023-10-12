@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run --server.port $PORT Streamlit_Studs_Deck_R4.py
+web: sh setup.sh && streamlit run --server.port $PORT Streamlit_Studs_Deck_R5.py
