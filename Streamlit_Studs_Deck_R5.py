@@ -1630,11 +1630,8 @@ st.write('Degtyarev, V.V., Hicks, S.J. (2023), Machine learning-based probabilis
 st.write('##### Data paper')
 st.write('Hicks, S.J., Degtyarev, V.V. (2023), Experimental data on the shear resistance of headed studs welded within the ribs of profiled steel decking transverse to the supporting beams, Data in Brief, 50, 109616. https://doi.org/10.1016/j.dib.2023.109616')    
 
-st.write('##### Source code')
-st.markdown('[GitHub](https://github.com/vitdegtyarev/Studs_in_Deck_Slabs)', unsafe_allow_html=True)
-
-st.write('##### Source code')
-st.markdown('[GitHub](https://github.com/vitdegtyarev/Studs_in_Deck_Slabs)', unsafe_allow_html=True)
-
 st.write('##### Test database')
 st.markdown('[Mendeley Data](https://data.mendeley.com/datasets/nfmhnzbfy9/2)', unsafe_allow_html=True)
+
+st.write('##### Source code')
+st.markdown('[GitHub](https://github.com/vitdegtyarev/Studs_in_Deck_Slabs)', unsafe_allow_html=True)
