@@ -1625,7 +1625,7 @@ else:
     st.pyplot(f1)
 
 st.write('##### Reference')
-st.write('Degtyarev, V.V., Hicks, S.J., Machine learning-based probabilistic predictions of shear resistance of welded studs in deck slab ribs transverse to beams, Steel and Composite Structures. In Press.')    
+st.write('Degtyarev, V.V., Hicks, S.J. (2023), Machine learning-based probabilistic predictions of shear resistance of welded studs in deck slab ribs transverse to beams, Steel and Composite Structures, 49(1), 109-123. https://doi.org/10.12989/scs.2023.49.1.109')    
 
 st.write('##### Source code')
 st.markdown('[GitHub](https://github.com/vitdegtyarev/Studs_in_Deck_Slabs)', unsafe_allow_html=True)
